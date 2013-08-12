@@ -47,7 +47,7 @@ public class MainFragment extends Fragment {
 		});
 		
 		//load HTML File in webview
-		mWebview.loadUrl("file:///android_asset/");
+		mWebview.loadUrl("file:///android_asset/index.html");
 		
 		//add the JavaScriptInterface so that JavaScript is able to use LocalStorageJavaScriptInterface's methods when calling "LocalStorage"
 		mWebview.addJavascriptInterface(new LocalStorageJavaScriptInterface(getActivity().getApplicationContext()), "LocalStorage");
@@ -57,7 +57,6 @@ public class MainFragment extends Fragment {
 		webSettings.setJavaScriptEnabled(true);
 
 		//Enable and setup JS localStorage
-		//webSettings.setDomStorageEnabled(true); 
 		webSettings.setDatabaseEnabled(true);
 		webSettings.setDatabasePath(getActivity().getFilesDir().getParentFile().getPath()+"/databases/");
 		
