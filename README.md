@@ -2,7 +2,7 @@ AndroidLocalStorage
 ===================
 
 LocalStorage is partially broken in Android webviews : Local storage is supposed to be a persistent storage available **accros all tabs** (or windows) of a browser.
-On Android, LocalStorage works well but only in the current webview. multiple webviews of the same app can't share the same data with LocalStorage.
+On Android, LocalStorage works well but only in the current webview. Multiple webviews of the same app can't share the same data with LocalStorage.
 That is sad !
 
 
