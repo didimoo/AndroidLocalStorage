@@ -35,7 +35,7 @@ this last step is a simple as this :
             //LocalStorage class was not found. be sure to add it to the webview
             alert('failed')
         }
-        //the use your localStorage as usually
+        //then use your localStorage as usually
         localStorage.setItem('foo','it works')
         alert(localStorage.getItem('foo'))
         
