@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+	        
+	      <!--  <link rel="stylesheet" type="text/css" href="css/timelines.css"/> -->
+
+	      <script type="text/javascript" src="zepto.min.js"></script>
+
+    </head>
+    <body>
+
+		<form>
+			<div class="instruction">Choose a key</div><br/>
+			<input type="text" id="key" value="myKey"><br/>
+			
+			<div class="instruction">Set an item</div><br/>
+			<input type="text" id="value" value="myValue"><br/>
+			<a href="javascript:;" id="setItem" class="button">setItem</a><br/>
+  		
+  			<div class="instruction">Get this item</div><br/>
+  			<a href="javascript:;" id="getItem" class="button">getItem</a><br/>
+		</form>
+  		
+        <div class="result">Value is : <span id="result"> </span><div>
+
+		<div class="instruction">Remove this item</div><br/>
+		<a href="javascript:;" id="removeItem" class="button">removeItem</a><br/>
+		<div class="instruction">Clear all items</div><br/>
+		<a href="javascript:;" id="clearAll" class="button">clear</a><br/>
+
+        
+
+        
+        <script>
+            
+            Zepto(function($){
+		        try{
+		            //we replace default localStorage with our Android Database one
+		            window.localStorage=LocalStorage;    
+		        }catch(e){
+		            //LocalStorage class was not found. be sure to add it to the webview
+					alert("LocalStorage ERROR : can't find android class LocalStorage. switching to raw localStorage")		        
+				}
+				
+				$('#getItem').on('tap click',function(){
+
+			        	var item = localStorage.getItem($('#key').val());
+			        	$('#result').html(item);
+		            return false;
+	            });
+
+				$('#setItem').on('tap click',function(){
+						alert("ok");
+		        		localStorage.setItem($('#key').val(),$('#value').val());
+		        		alert("ok");
+		            return false;
+	            });
+
+ 				$('#removeItem').on('tap click',function(){
+		        	localStorage.removeItem($('#key').val(),$('#value').val());
+		            return false;
+	            });
+
+ 				$('#clearAll').on('tap click',function(){
+		        	localStorage.clear();
+		            return false;
+	            });
+ 
+	        });
+
+        </script>
+        
+    </body>
+</html>

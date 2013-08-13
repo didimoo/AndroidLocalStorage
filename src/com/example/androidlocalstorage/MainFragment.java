@@ -57,9 +57,10 @@ public class MainFragment extends Fragment {
 		webSettings.setJavaScriptEnabled(true);
 
 		//Enable and setup JS localStorage
+		webSettings.setDomStorageEnabled(true);
+		//those two lines seem necessary to keep data that were stored even if the app was killed.
 		webSettings.setDatabaseEnabled(true);
-		webSettings.setDatabasePath(getActivity().getFilesDir().getParentFile().getPath()+"/databases/");
-		
+		webSettings.setDatabasePath(getActivity().getFilesDir().getParentFile().getPath()+"/databases/");		
 	}
 	
 	
