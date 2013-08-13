@@ -4,33 +4,33 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 	        
-	      <!--  <link rel="stylesheet" type="text/css" href="css/timelines.css"/> -->
+	     	<link rel="stylesheet" type="text/css" href="index.css"/>
 
-	      <script type="text/javascript" src="zepto.min.js"></script>
+	      	<script type="text/javascript" src="zepto.min.js"></script>
 
     </head>
     <body>
 
 		<form>
-			<div class="instruction">Choose a key</div><br/>
-			<input type="text" id="key" value="myKey"><br/>
+			<div class="instruction">Choose a key
+			<input type="text" id="key" value="myKey"></div>
 			
-			<div class="instruction">Set an item</div><br/>
+			<div class="instruction">Set an item
 			<input type="text" id="value" value="myValue"><br/>
-			<a href="javascript:;" id="setItem" class="button">setItem</a><br/>
+			<a href="javascript:;" id="setItem" class="button">setItem</a></div>
   		
-  			<div class="instruction">Get this item</div><br/>
-  			<a href="javascript:;" id="getItem" class="button">getItem</a><br/>
+  			<div class="instruction">Get this item
+  			<a href="javascript:;" id="getItem" class="button">getItem</a></div>
 		</form>
   		
-        <div class="result">Value is : <span id="result"> </span><div>
+        <div class="result">Value is :<br/> <span id="result"> </span></div>
 
-		<div class="instruction">Remove this item</div><br/>
-		<a href="javascript:;" id="removeItem" class="button">removeItem</a><br/>
-		<div class="instruction">Clear all items</div><br/>
-		<a href="javascript:;" id="clearAll" class="button">clear</a><br/>
+		<div class="instruction">Remove this item
+		<a href="javascript:;" id="removeItem" class="button">removeItem</a></div>
+		<div class="instruction">Clear all items
+		<a href="javascript:;" id="clearAll" class="button">clear</a><br/></div>
 
-        
+        <div id="log"></div>
 
         
         <script>
@@ -48,28 +48,39 @@
 
 			        	var item = localStorage.getItem($('#key').val());
 			        	$('#result').html(item);
+			        	log("value "+item+" got for key "+$('#key').val());
 		            return false;
 	            });
 
 				$('#setItem').on('tap click',function(){
-						alert("ok");
 		        		localStorage.setItem($('#key').val(),$('#value').val());
-		        		alert("ok");
+		        		log("value "+$('#value').val()+" set for key "+$('#key').val());
 		            return false;
 	            });
 
  				$('#removeItem').on('tap click',function(){
 		        	localStorage.removeItem($('#key').val(),$('#value').val());
+		        	log("item removed for key "+$('#key').val());
 		            return false;
 	            });
 
  				$('#clearAll').on('tap click',function(){
 		        	localStorage.clear();
+		        	log("LocalStorage cleared");
 		            return false;
 	            });
- 
+	            
+	           	function log(stuff){ 
+				    if (typeof stuff != "string"){
+				        stuff=JSON.stringify(stuff)    
+				    }   
+				    $('#log').append('<br/>'+stuff)    
+				    if (window.console){
+				        console.log(stuff)
+	   			 	}
+				}
 	        });
-
+	        
         </script>
         
     </body>

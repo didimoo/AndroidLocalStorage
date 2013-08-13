@@ -8,7 +8,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New webview" />
+        android:layout_gravity="center"
+        android:text="Open a new webview" />
 
     <WebView
         android:id="@+id/webView"
