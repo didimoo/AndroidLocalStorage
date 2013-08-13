@@ -25,5 +25,23 @@ How to use ?
 * create the interface and add it to the webview as shown in mainFragment.java
 * bind the javascript localStorage to the new one as shown in assets/index.html
 
+this last step is a simple as this :
+
+    <script type="text/javascript">
+        try{
+            //we replace default localStorage with our Android Database one
+            window.localStorage=LocalStorage;    
+        }catch(e){
+            //LocalStorage class was not found. be sure to add it to the webview
+            alert('failed')
+        }
+        //the use your localStorage as usually
+        localStorage.setItem('foo','it works')
+        alert(localStorage.getItem('foo'))
+        
+    </script>
+
+
+
 play with this example project to see how it works. 
 
