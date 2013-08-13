@@ -1,41 +1,41 @@
 AndroidLocalStorage
 ===================
 
-Local Storage is partially broken in Android webivews : Local storage is supposed to be a persistent storage available **accros all tabs** (or windows) of a browser.
-On Android, localStorage works well but only in the current webview. multiple webviews of the same app can't share the same data with localStorage.
-that is sad !
+LocalStorage is partially broken in Android webviews : Local storage is supposed to be a persistent storage available **accros all tabs** (or windows) of a browser.
+On Android, LocalStorage works well but only in the current webview. multiple webviews of the same app can't share the same data with LocalStorage.
+That is sad !
 
 
-JavascriptInterface to the rescue !
+JavaScriptInterface to the rescue !
 ===================================
 
-this sample Android app shows you how you can fix the webview localStorage with the javascript interface.
+This sample Android app shows you how you can fix the webview LocalStorage with a JavaScriptInterface.
 
 What we do here is :
 
-* create an Android database with a simple key/value table
-* create a javascript interface which implements all localStorage methods (getItem, setItem, removeItem, clear)
-* adds it to the webview
-* replace the javascript localStorage with this new one so that you don't have to change the way you use your localStorage
- 
-How to use ?
-============
+* Create an Android database with a simple key/value table
+* Create a JavaScriptInterface which implements all LocalStorage's methods (getItem, setItem, removeItem, clear)
+* Add it to the webview
+* Replace the JavaScript LocalStorage with this "new one" so that you don't have to change the way you use your localStorage usually.
 
-* include the LocalStorage.java
-* create the interface and add it to the webview as shown in mainFragment.java
-* bind the javascript localStorage to the new one as shown in assets/index.html
+How to use it in your own project ?
+===================================
 
-this last step is a simple as this :
+* Include the LocalStorage.java
+* Create the JavaScriptInterface and add it to the webview as shown in MainFragment.java
+* Bind the JavaScript LocalStorage to the new one as shown in assets/index.html
+
+This last step is as simple as this :
 
     <script type="text/javascript">
-        try{
-            //we replace default localStorage with our Android Database one
-            window.localStorage=LocalStorage;    
-        }catch(e){
-            //LocalStorage class was not found. be sure to add it to the webview
-            alert('failed')
-        }
-        //then use your localStorage as usually
+	        try{
+	            //we replace default localStorage with our Android Database one
+	            window.localStorage=LocalStorage;    
+	        }catch(e){
+	            //LocalStorage class was not found. be sure to add it to the webview
+			         	alert("LocalStorage ERROR : can't find android class LocalStorage. switching to raw localStorage")		        
+			      }
+        //then use your localStorage as usual
         localStorage.setItem('foo','it works')
         alert(localStorage.getItem('foo'))
         
@@ -43,5 +43,5 @@ this last step is a simple as this :
 
 
 
-play with this example project to see how it works. 
+Play with this example project to see how it works. 
 
