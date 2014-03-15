@@ -122,7 +122,7 @@ public class MainFragment extends Fragment {
 				values.put(LocalStorage.LOCALSTORAGE_VALUE, value);
 				if(oldValue != null)
 				{
-					database.update(LocalStorage.LOCALSTORAGE_TABLE_NAME, values, LocalStorage.LOCALSTORAGE_ID + " = " + key, null);
+					database.update(LocalStorage.LOCALSTORAGE_TABLE_NAME, values, LocalStorage.LOCALSTORAGE_ID + "='" + key + "'", null);
 				}
 				else
 				{
@@ -142,7 +142,7 @@ public class MainFragment extends Fragment {
 			if(key != null)
 			{
 				database = localStorageDBHelper.getWritableDatabase();
-				database.delete(LocalStorage.LOCALSTORAGE_TABLE_NAME, LocalStorage.LOCALSTORAGE_ID + " = " + key, null);
+				database.delete(LocalStorage.LOCALSTORAGE_TABLE_NAME, LocalStorage.LOCALSTORAGE_ID + "='" + key + "'", null);
 				database.close();
 			}
 		}
